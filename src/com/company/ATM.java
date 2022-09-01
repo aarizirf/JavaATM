@@ -28,8 +28,8 @@ public class ATM {
 
     public double checkBalance(int id) {
         if(accounts.containsKey(id)) {
-            return accounts.get(id);
-//            return 0.01 * Math.floor(accounts.get(id) * 100.0);
+//            return accounts.get(id);
+            return 0.01 * Math.floor(accounts.get(id) * 100.0);
         } else return 0.0;
     }
 
