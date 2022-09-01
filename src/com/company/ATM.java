@@ -10,6 +10,7 @@ public class ATM {
     }
 
     public void openAccount(int id) {
+        if(accounts.containsKey(id)) return;
         accounts.put(id, 0.0);
     }
 
@@ -28,10 +29,12 @@ public class ATM {
     public double checkBalance(int id) {
         if(accounts.containsKey(id)) {
             return accounts.get(id);
+//            return 0.01 * Math.floor(accounts.get(id) * 100.0);
         } else return 0.0;
     }
 
     public boolean depositMoney(int id, double amt) {
+        if(amt <= 0) return false;
         if(accounts.containsKey(id)) {
             accounts.put(id, accounts.get(id) + amt);
             return true;
@@ -39,6 +42,7 @@ public class ATM {
     }
 
     public boolean withdrawMoney(int id, double amt) {
+        if(amt<=0) return false;
         if(accounts.containsKey(id)) {
             double money = accounts.get(id);
             if(amt > money) return false;
